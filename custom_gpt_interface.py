@@ -27,17 +27,7 @@ def get_gpt_response(prompt):
 # Streamlit interface
 def main():
     # Create tabs for different sections
-    tab1, tab2, tab3 = st.tabs(["Main", "Results", "Instructions"])
-
-    with tab1:
-        # Make the title smaller to reduce white space
-        st.markdown("<h1 style='font-size: 2em; color: #333; text-align: center;'>Custom GPT for Electrical Engineering Calculations</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center; color: #666; margin-bottom: 30px;'>This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.</p>", unsafe_allow_html=True)
-
-        # Project Details (Top Section)
-        st.markdown("<div style='border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-        st.markdown("<h3 style='color: #555; margin-bottom: 10px;'>Project Details</h3>", unsafe_allow_html=True)
-        col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
+    tab1, tab2, tab3 = st.tabs(["Main", "Results", "Instructions"], format_func=lambda name: f"<span style='font-size: 1.1em; color: #444;'>{name}</span>", unsafe_allow_html=True)
         with col1:
             project_name = st.text_input("Project Name:")
         with col2:
@@ -53,7 +43,7 @@ def main():
         # General Settings (Below Project Details)
         st.markdown("<div style='border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
         st.markdown("<h3 style='color: #555; margin-bottom: 10px;'>General Settings</h3>", unsafe_allow_html=True)
-        col1, col2, col3 = st.columns([1, 1, 1])
+        col1, col2, col3 = st.columns([1, 1, 1], gap="small")
         with col1:
             units = st.selectbox("Select Units:", ["Imperial", "Metric"], index=1)
         with col2:
