@@ -25,16 +25,14 @@ def get_gpt_response(prompt):
 
 # Streamlit interface
 def main():
-    st.title("Custom GPT for Electrical Engineering Calculations")
-    st.write("This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.")
-
-    # Debugging to check if API key is loaded
-    st.write(f"API Key Loaded: {API_KEY is not None}")  # This will print True if the API key is being accessed
+    # Make the title smaller to reduce white space
+    st.markdown("# Custom GPT for Electrical Engineering Calculations")
+    st.markdown("This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.")
 
     # Compact Layout for Inputs
     with st.container():
         # Project Details (Top Section)
-        st.subheader("Project Details")
+        st.markdown("### Project Details")
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
             project_name = st.text_input("Project Name:")
@@ -49,7 +47,7 @@ def main():
 
     with st.container():
         # General Settings (Below Project Details)
-        st.subheader("General Settings")
+        st.markdown("### General Settings")
         col1, col2, col3 = st.columns(3)
         with col1:
             units = st.selectbox("Select Units:", ["Imperial", "Metric"], index=1)
@@ -60,7 +58,7 @@ def main():
 
     with st.container():
         # Load and Electrical Specifications and Conductor and Installation Details
-        st.subheader("Load and Electrical Specifications / Conductor and Installation Details")
+        st.markdown("### Load and Electrical Specifications / Conductor and Installation Details")
         col1, col2 = st.columns(2)
         with col1:
             load_current = st.number_input("Enter Load Current (A):", min_value=0.0, value=10.0, step=0.1)
