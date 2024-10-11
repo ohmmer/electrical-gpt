@@ -31,7 +31,15 @@ def main():
     # Debugging to check if API key is loaded
     st.write(f"API Key Loaded: {API_KEY is not None}")  # This will print True if the API key is being accessed
 
-    # General Settings (Top Section)
+    # Project Details (Top Section)
+    st.subheader("Project Details")
+    project_name = st.text_input("Project Name:")
+    job_number = st.text_input("Job Number:")
+    load_tag_number = st.text_input("Load Tag Number:")
+    checked_by = st.text_input("Checked By:")
+    date = st.date_input("Date:")
+
+    # General Settings (Below Project Details)
     st.subheader("General Settings")
     col1, col2, col3 = st.columns(3)
     with col1:
@@ -59,6 +67,7 @@ def main():
 
     # Generate prompt for GPT
     prompt = (
+        f"Project Name: {project_name}, Job Number: {job_number}, Load Tag Number: {load_tag_number}, Checked By: {checked_by}, Date: {date}. "
         f"What conductor size is needed for a {load_current}A load at {supply_voltage}V using {insulation_type} insulation? "
         f"The units are {units}, number of phases is {number_of_phases}, number of runs per phase is {number_of_runs_per_phase}, "
         f"power factor is {power_factor}, total number of power conductors in raceway is {total_conductors}, "
