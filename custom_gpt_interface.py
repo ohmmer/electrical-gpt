@@ -31,8 +31,8 @@ def main():
 
     with tab1:
         # Make the title smaller to reduce white space
-        st.markdown("<h1 style='font-size: 2em; color: #333; text-align: center;'>Custom GPT for Electrical Engineering Calculations</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center; color: #666; margin-bottom: 30px;'>This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.</p>", unsafe_allow_html=True)
+        st.markdown("<h1 style='font-size: 1.8em; color: #333; text-align: center;'>Custom GPT for Electrical Engineering Calculations</h1>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: #666; margin-bottom: 15px;'>This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.</p>", unsafe_allow_html=True)
 
         # Project Details (Top Section)
         st.markdown("<div style='border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
