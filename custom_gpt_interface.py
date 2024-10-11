@@ -38,7 +38,7 @@ def main():
         st.markdown("<h3 style='color: #555; margin-bottom: 10px;'>Project Details</h3>", unsafe_allow_html=True)
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
-            , key='project_name', help='Project Information', style={'background-color': '#FFFF00'})
+            project_name = st.text_input("Project Name:", key='project_name', help='Project Information')
         with col2:
             job_number = st.text_input("Job Number:")
         with col3:
