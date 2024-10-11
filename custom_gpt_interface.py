@@ -28,13 +28,28 @@ def main():
     st.title("Custom GPT for Electrical Engineering Calculations")
     st.write("This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.")
 
+    # Debugging to check if API key is loaded
+    st.write(f"API Key Loaded: {API_KEY is not None}")  # This will print True if the API key is being accessed
+
     # User input fields with default values and validation
+    units = st.selectbox("Select Units:", ["Imperial", "Metric"], index=1)
     load_current = st.number_input("Enter Load Current (A):", min_value=0.0, value=10.0, step=0.1)
     supply_voltage = st.number_input("Enter Supply Voltage (V):", min_value=0.0, value=208.0, step=1.0)
+    number_of_phases = st.selectbox("Enter Number of Phases:", [1, 3], index=1)
+    number_of_runs_per_phase = st.number_input("Enter Number of Runs per Phase:", min_value=1, value=1, step=1)
+    power_factor = st.number_input("Enter Power Factor (0-1):", min_value=0.0, max_value=1.0, value=1.0, step=0.01)
+    total_conductors = st.number_input("Enter Total Number of Power Conductors in Raceway:", min_value=1, value=1, step=1)
+    max_voltage_drop = st.number_input("Enter Max Allowable Voltage Drop (per unit or %):", min_value=0.0, value=0.05, step=0.01)
+    ambient_temperature = st.number_input("Enter Maximum Design Ambient Temperature (°C):", min_value=-50.0, value=40.0, step=1.0)
     insulation_type = st.selectbox("Select Insulation Type:", ["Thermoset", "PVC", "XLPE", "Thermoplastic"], index=0)
 
     # Generate prompt for GPT
-    prompt = f"What conductor size is needed for a {load_current}A load at {supply_voltage}V using {insulation_type} insulation?"
+    prompt = (
+        f"What conductor size is needed for a {load_current}A load at {supply_voltage}V using {insulation_type} insulation? "
+        f"The units are {units}, number of phases is {number_of_phases}, number of runs per phase is {number_of_runs_per_phase}, "
+        f"power factor is {power_factor}, total number of power conductors in raceway is {total_conductors}, "
+        f"maximum allowable voltage drop is {max_voltage_drop}, and the ambient temperature is {ambient_temperature}°C."
+    )
 
     # Get GPT response
     if st.button("Get Conductor Size Recommendation"):
