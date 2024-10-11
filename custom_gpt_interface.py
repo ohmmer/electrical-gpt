@@ -27,7 +27,7 @@ def get_gpt_response(prompt):
 # Streamlit interface
 def main():
     # Create tabs for different sections
-    tab1, tab2, tab3 = st.tabs(["Main", "Results", "Instructions"])
+    tab1, tab2, tab3 = st.tabs(["Main", "Results", "Instructions"], format_func=lambda name: f"<span style='font-size: 1.2em;'>{name}</span>", unsafe_allow_html=True)
 
     with tab1:
         # Make the title smaller to reduce white space
