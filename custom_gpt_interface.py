@@ -31,13 +31,13 @@ def main():
 
     with tab1:
         # Make the title smaller to reduce white space
-        st.markdown("# Custom GPT for Electrical Engineering Calculations")
-        st.markdown("This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.")
+        st.markdown("<h1 style='font-size: 2.2em; color: #333; text-align: center;'>Custom GPT for Electrical Engineering Calculations</h1>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: #666;'>This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.</p>", unsafe_allow_html=True)
 
-        # Compact Layout for Inputs with borders
+        # Compact Layout for Inputs with borders and enhanced styling
         # Project Details (Top Section)
-        st.markdown("<div style='border: 1px solid #e6e6e6; padding: 15px; border-radius: 10px; margin-bottom: 15px;'>", unsafe_allow_html=True)
-        st.markdown("### Project Details")
+        st.markdown("<div style='border: 2px solid #0073e6; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0px 0px 15px rgba(0, 115, 230, 0.2);'>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #0073e6;'>Project Details</h3>", unsafe_allow_html=True)
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
             project_name = st.text_input("Project Name:")
@@ -52,8 +52,8 @@ def main():
         st.markdown("</div>", unsafe_allow_html=True)
 
         # General Settings (Below Project Details)
-        st.markdown("<div style='border: 1px solid #e6e6e6; padding: 15px; border-radius: 10px; margin-bottom: 15px;'>", unsafe_allow_html=True)
-        st.markdown("### General Settings")
+        st.markdown("<div style='border: 2px solid #28a745; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0px 0px 15px rgba(40, 167, 69, 0.2);'>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #28a745;'>General Settings</h3>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
         with col1:
             units = st.selectbox("Select Units:", ["Imperial", "Metric"], index=1)
@@ -64,8 +64,8 @@ def main():
         st.markdown("</div>", unsafe_allow_html=True)
 
         # Load and Electrical Specifications and Conductor and Installation Details
-        st.markdown("<div style='border: 1px solid #e6e6e6; padding: 15px; border-radius: 10px; margin-bottom: 15px;'>", unsafe_allow_html=True)
-        st.markdown("### Load and Electrical Specifications / Conductor and Installation Details")
+        st.markdown("<div style='border: 2px solid #ffc107; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0px 0px 15px rgba(255, 193, 7, 0.2);'>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #ffc107;'>Load and Electrical Specifications / Conductor and Installation Details</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:
             load_current = st.number_input("Enter Load Current (A):", min_value=0.0, value=10.0, step=0.1)
@@ -93,8 +93,10 @@ def main():
             if "Error" in response:
                 st.error(response)
             else:
-                st.write("### Recommended Conductor Size:")
+                st.markdown("<div style='border: 2px solid #17a2b8; padding: 15px; border-radius: 10px; margin-top: 20px; box-shadow: 0px 0px 15px rgba(23, 162, 184, 0.2);'>", unsafe_allow_html=True)
+                st.markdown("### Recommended Conductor Size:")
                 st.success(response)
+                st.markdown("</div>", unsafe_allow_html=True)
 
     with tab2:
         st.markdown("# Results")
