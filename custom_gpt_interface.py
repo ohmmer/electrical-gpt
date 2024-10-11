@@ -28,7 +28,7 @@ def get_gpt_response(prompt):
 def main():
     # Create tabs for different sections
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Main", "Results", "Instructions", "Settings", "About"])
-        with col1:
+    with col1:
             project_name = st.text_input("Project Name:")
         with col2:
             job_number = st.text_input("Job Number:")
@@ -86,12 +86,10 @@ def main():
                 st.markdown("### Recommended Conductor Size:")
                 st.success(response)
                 st.markdown("</div>", unsafe_allow_html=True)
-
     with tab2:
         st.markdown("# Results")
         st.write("This tab will display the results of the conductor sizing calculations.")
         # Future implementation could include saving results and displaying them here
-
     with tab3:
         st.markdown("# Instructions")
         st.write("""
@@ -103,7 +101,6 @@ def main():
         4. Click the "Get Conductor Size Recommendation" button to get the calculated recommendation.
         5. Navigate to the **Results** tab to view or save past calculations (future feature).
         """)
-
     with tab4:
         st.markdown("# Settings")
         st.write("Here you can modify the application settings such as API keys and other preferences.")
@@ -113,7 +110,6 @@ def main():
         max_tokens = st.number_input("Max Tokens:", min_value=50, max_value=500, value=100)
         if st.button("Save Settings"):
             st.success("Settings saved successfully.")
-
     with tab5:
         st.markdown("# About")
         st.write("""
