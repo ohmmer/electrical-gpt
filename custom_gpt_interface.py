@@ -27,7 +27,7 @@ def get_gpt_response(prompt):
 # Streamlit interface
 def main():
     # Create tabs for different sections
-    tab1, tab2, tab3 = st.tabs(["Main", "Results", "Instructions"], format_func=lambda name: f"<span style='font-size: 1.1em; color: #444;'>{name}</span>", unsafe_allow_html=True)
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Main", "Results", "Instructions", "Settings", "About"])
         with col1:
             project_name = st.text_input("Project Name:")
         with col2:
@@ -102,6 +102,30 @@ def main():
         3. Provide the load and electrical specifications as well as conductor installation details.
         4. Click the "Get Conductor Size Recommendation" button to get the calculated recommendation.
         5. Navigate to the **Results** tab to view or save past calculations (future feature).
+        """)
+
+    with tab4:
+        st.markdown("# Settings")
+        st.write("Here you can modify the application settings such as API keys and other preferences.")
+        api_key = st.text_input("API Key:")
+        gpt_model = st.selectbox("Select GPT Model:", ["Custom GPT-3", "Custom GPT-4"]) 
+        temperature = st.slider("Temperature (Creativity Level):", min_value=0.0, max_value=1.0, value=0.5)
+        max_tokens = st.number_input("Max Tokens:", min_value=50, max_value=500, value=100)
+        if st.button("Save Settings"):
+            st.success("Settings saved successfully.")
+
+    with tab5:
+        st.markdown("# About")
+        st.write("""
+        **About This Application**
+        
+        This application assists electrical engineers in determining conductor sizing and analyzing voltage drop calculations using an AI-powered Custom GPT model.
+        
+        **Purpose**: The goal of this tool is to streamline conductor sizing calculations, ensure consistency, and reduce manual calculation errors.
+        
+        **Developer Information**: Developed by [Your Name/Company] for engineering professionals seeking efficiency in project calculations.
+        
+        **Disclaimer**: This application is intended to aid calculations but should not be solely relied upon for critical engineering decisions without verification.
         """)
 
 if __name__ == "__main__":
