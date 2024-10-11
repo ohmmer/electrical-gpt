@@ -1,9 +1,10 @@
 import streamlit as st
 import requests
+import os
 
 # Constants
 GPT_API_URL = "https://api.openai.com/v1/completions"
-API_KEY = "YOUR_OPENAI_API_KEY"
+API_KEY = os.getenv('OPENAI_API_KEY')
 
 # Helper function to interact with Custom GPT
 def get_gpt_response(prompt):
@@ -20,7 +21,7 @@ def get_gpt_response(prompt):
     if response.status_code == 200:
         return response.json().get("choices")[0].get("text").strip()
     else:
-        return "Error: Unable to get response from GPT."
+        return f"Error: {response.status_code} - {response.text}"
 
 # Streamlit interface
 def main():
