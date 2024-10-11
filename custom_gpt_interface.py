@@ -36,7 +36,7 @@ def main():
 
         # Project Details (Top Section)
         st.markdown("<div style='border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-        st.markdown("<h3 style='color: #333; margin-bottom: 10px;'>Project Details</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #555; margin-bottom: 10px;'>Project Details</h3>", unsafe_allow_html=True)
         col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
         with col1:
             project_name = st.text_input("Project Name:")
@@ -52,7 +52,7 @@ def main():
 
         # General Settings (Below Project Details)
         st.markdown("<div style='border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-        st.markdown("<h3 style='color: #333; margin-bottom: 10px;'>General Settings</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #555; margin-bottom: 10px;'>General Settings</h3>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns([1, 1, 1])
         with col1:
             units = st.selectbox("Select Units:", ["Imperial", "Metric"], index=1)
@@ -64,7 +64,7 @@ def main():
 
         # Load and Electrical Specifications and Conductor and Installation Details
         st.markdown("<div style='border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;'>", unsafe_allow_html=True)
-        st.markdown("<h3 style='color: #333; margin-bottom: 10px;'>Load and Electrical Specifications / Conductor and Installation Details</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color: #555; margin-bottom: 10px;'>Load and Electrical Specifications / Conductor and Installation Details</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns([1, 1])
         with col1:
             load_current = st.number_input("Enter Load Current (A):", min_value=0.0, value=10.0, step=0.1)
