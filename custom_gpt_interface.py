@@ -28,10 +28,10 @@ def main():
     st.title("Custom GPT for Electrical Engineering Calculations")
     st.write("This interface helps you interact with the Custom GPT model for conductor sizing and voltage drop calculations.")
 
-    # User input fields
-    load_current = st.number_input("Enter Load Current (A):", min_value=0.0, step=0.1)
-    supply_voltage = st.number_input("Enter Supply Voltage (V):", min_value=0.0, step=1.0)
-    insulation_type = st.selectbox("Select Insulation Type:", ["Thermoset", "PVC", "XLPE", "Thermoplastic"])
+    # User input fields with default values and validation
+    load_current = st.number_input("Enter Load Current (A):", min_value=0.0, value=10.0, step=0.1)
+    supply_voltage = st.number_input("Enter Supply Voltage (V):", min_value=0.0, value=208.0, step=1.0)
+    insulation_type = st.selectbox("Select Insulation Type:", ["Thermoset", "PVC", "XLPE", "Thermoplastic"], index=0)
 
     # Generate prompt for GPT
     prompt = f"What conductor size is needed for a {load_current}A load at {supply_voltage}V using {insulation_type} insulation?"
@@ -39,8 +39,11 @@ def main():
     # Get GPT response
     if st.button("Get Conductor Size Recommendation"):
         response = get_gpt_response(prompt)
-        st.write("### Recommended Conductor Size:")
-        st.write(response)
+        if "Error" in response:
+            st.error(response)
+        else:
+            st.write("### Recommended Conductor Size:")
+            st.success(response)
 
 if __name__ == "__main__":
     main()
